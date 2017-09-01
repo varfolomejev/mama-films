@@ -9,7 +9,14 @@ module.exports = function (db) {
             ")")
         },
         getAll: function (callback) {
-            db.all("SELECT * FROM films ORDER BY name ASC", [], callback);
+            db.all("SELECT * FROM films ORDER BY name ASC LIMIT 20", [], callback);
+        },
+        find: function (name, callback) {
+            let params = {$name: name + '%'};
+            db.all("SELECT * FROM films WHERE name LIKE $name ORDER BY name ASC LIMIT 20", params, callback);
+        },
+        count: function(callback){
+            db.get("SELECT COUNT(*) as count FROM films", [], callback);
         },
         getOne: function (params, callback) {
             console.log('getOne', params);

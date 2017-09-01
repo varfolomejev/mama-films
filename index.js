@@ -35,13 +35,29 @@ app.get('/', function (req, res) {
         if( err ){
             console.log( err );
         }
-        app.render('index', {
+        Film.count(function (err, count) {
+            app.render('index', {
                 models: models,
                 info: req.flash('info'),
-                count: models.length,
+                count: count ? count.count : 0,
             }, function (err, html) {
                 res.render('layouts/main', {content: html});
-        })
+            })
+        });
+    });
+});
+
+app.get('/search', function (req, res) {
+    Film.find(req.query.name, function (err, models){
+        if( err ){
+            res.json(err);
+        } else {
+            app.render('search', {
+                models: models,
+            }, function (err, html) {
+                res.render('layouts/empty', {content: html});
+            })
+        }
     });
 });
 
@@ -70,7 +86,7 @@ app.post('/create', function (req, res) {
     });
 });
 
-app.listen(8080);
+app.listen(8081);
 
-console.log("Server work. Link http://localhost:8080");
-opn("http://localhost:8080");
+console.log("Server work. Link http://localhost:8081");
+opn("http://localhost:8081");

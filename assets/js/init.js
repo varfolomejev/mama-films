@@ -1,20 +1,17 @@
-function searchFilms() {
-    // Declare variables
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("searchFilms");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("films");
-    tr = table.getElementsByTagName("tr");
+"use strict";
 
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
+function searchFilms(input) {
+    var errorText = document.getElementById('search-errors'),
+        tbody = document.getElementById('films').getElementsByTagName('tbody')[0];
+
+    errorText.innerHTML = '';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/search?name=' + input.value, false);
+    xhr.send();
+    if (xhr.status != 200) {
+        errorText.innerHTML = xhr.status + ': ' + xhr.statusText;
+    } else {
+        tbody.innerHTML = xhr.responseText;
     }
 }
