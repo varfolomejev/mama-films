@@ -1,0 +1,6 @@
+.add-new-video {
+    cursor: pointer;
+}
+.add-new-video.available {
+    background-color: #5cb85c;
+}

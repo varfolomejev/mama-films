@@ -4,6 +4,8 @@
   "description": "mama's films)",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode production",
+    "watch": "webpack --mode production --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,6 +19,24 @@
     "express-session": "^1.15.6",
     "handlebars": "^4.0.11",
     "opn": "^5.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "sqlite3": "^3.1.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.5.2",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "redux-devtools-extension": "^2.13.5",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8"
   }
 }
