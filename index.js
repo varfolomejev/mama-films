@@ -7,7 +7,6 @@ const app = express();
 const session = require('express-session')
 const cookieParser = require('cookie-parser');
 const flash = require('express-flash');
-const opn = require('opn');
 
 app.use( bodyParser.urlencoded({extended: true}) );
 app.use( bodyParser.json() );
@@ -81,4 +80,3 @@ app.delete('/', function (req, res) {
 app.listen(8081);
 
 console.log("Server work. Link http://localhost:8081");
-// opn("http://localhost:8081");
